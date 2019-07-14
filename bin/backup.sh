@@ -44,7 +44,7 @@ echo "Dumping database cluster $i: $PGUSER@$PGHOST:$PGPORT/$PGDATABASE"
 
 # Wait for PostgreSQL to become available.
 COUNT=0
-until psql -l; do
+until psql -l -d "$PGDATABASE"; do
 	if [[ "$COUNT" == 0 ]]; then
 		echo "Waiting for PostgreSQL to become available..."
 	fi
